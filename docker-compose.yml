@@ -1,0 +1,32 @@
+version: "3.8"
+
+networks:
+  wedding_basic:
+
+services:
+  invitation:
+    container_name: invitation
+    hostname: invitation
+    image: "registry-intl.cn-hongkong.aliyuncs.com/happywifehappylife/wedding-invitation:v5"
+    restart: always
+    ports:
+    - 80:3000
+    networks:
+    - wedding_basic
+  mongo:
+    container_name: mongo
+    hostname: mongo
+    image: mongo:6.0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    restart: always
+    ports:
+    - 27017:27017
+    volumes:
+    - wedding_data:/data/db
+    networks:
+    - wedding_basic
+
+volumes:
+  wedding_data:
