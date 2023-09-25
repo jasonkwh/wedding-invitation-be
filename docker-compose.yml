@@ -7,7 +7,7 @@ services:
   invitation:
     container_name: invitation
     hostname: invitation
-    image: "registry-intl.cn-hongkong.aliyuncs.com/happywifehappylife/wedding-invitation:v5"
+    image: "registry-intl.cn-hongkong.aliyuncs.com/happywifehappylife/wedding-invitation:v7"
     restart: unless-stopped
     ports:
     - 3000:3000
